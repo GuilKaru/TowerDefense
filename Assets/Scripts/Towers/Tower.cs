@@ -23,6 +23,7 @@ public class Tower : MonoBehaviour
     private Enemy enemyTarget;
 
     private void Start()
+
     {
         InvokeRepeating("TargetUpdate", 0f, 0.5f);
     }
@@ -62,6 +63,7 @@ public class Tower : MonoBehaviour
         if (GameManager.gameEnded) return;
 
         //Line renderer if needed for lasers
+        if (towerTarget == null) return;
 
         TargetLockOn();
         CannonLockOn();

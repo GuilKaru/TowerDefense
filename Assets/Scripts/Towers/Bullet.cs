@@ -10,6 +10,10 @@ public class Bullet : MonoBehaviour
     [Header("Bullet Stats")]
     public float speed = 10f;
     public int damage = 10;
+    public float explosionRadius = 0f;
+
+    [Header("Effects")]
+    public GameObject hitEffect;
 
     public void Chase(Transform _enemyTarget)
     {
@@ -33,11 +37,22 @@ public class Bullet : MonoBehaviour
         }
 
         transform.Translate(dir.normalized * currentDistance, Space.World);
+        transform.LookAt(enemyTarget);
     }
 
     private void HitTarget()
     {
-        DamageEnemy(enemyTarget);
+        GameObject effectIns = (GameObject)Instantiate(hitEffect, transform.position, transform.rotation);
+        Destroy(effectIns, 2f);
+
+        if (explosionRadius > 0f)
+        {
+            Explode();
+        }
+        else
+        {
+            DamageEnemy(enemyTarget);
+        }
     }
 
     void DamageEnemy(Transform enemy)
@@ -50,5 +65,23 @@ public class Bullet : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    void Explode()
+    {
+        Collider[] hitObjects = Physics.OverlapSphere(transform.position, explosionRadius);
+        foreach (Collider hitObject in hitObjects)
+        {
+            if(hitObject.tag == "Enemy")
+            {
+                DamageEnemy(hitObject.transform);
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }

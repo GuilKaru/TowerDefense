@@ -57,7 +57,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4398812503925755708}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.485, y: 0.2, z: 1.526}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -133,10 +133,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnSpeed: 5
   rotatingBase: {fileID: 1300439854785039846}
-  tiltingCannon: {fileID: 4518708509397278599}
+  tiltingCannon: {fileID: 5855735756543823786}
   bulletPrefab: {fileID: 157568805455147340, guid: 5679ec29622899141b1df3f62bf153a3, type: 3}
   firePoint: {fileID: 916497356568709590}
-  range: 15
+  range: 4.5
   fireRate: 1
   fireCountdown: 0
 --- !u!1001 &3841741422683688084
@@ -146,6 +146,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3909238851548927366}
     m_Modifications:
+    - target: {fileID: 857150723008221971, guid: 8bbf20e7e6626064fb9e0f1d3117124a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 857150723008221971, guid: 8bbf20e7e6626064fb9e0f1d3117124a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 857150723008221971, guid: 8bbf20e7e6626064fb9e0f1d3117124a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 2836296142135624050, guid: 8bbf20e7e6626064fb9e0f1d3117124a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -194,6 +206,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: weapon_cannon
       objectReference: {fileID: 0}
+    - target: {fileID: 5343434855153641546, guid: 8bbf20e7e6626064fb9e0f1d3117124a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bbf20e7e6626064fb9e0f1d3117124a, type: 3}
 --- !u!4 &916497356568709590 stripped
@@ -206,8 +222,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2836296142135624050, guid: 8bbf20e7e6626064fb9e0f1d3117124a, type: 3}
   m_PrefabInstance: {fileID: 3841741422683688084}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &4518708509397278599 stripped
+--- !u!4 &5855735756543823786 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 857150723008221971, guid: 8bbf20e7e6626064fb9e0f1d3117124a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7211208435020202814, guid: 8bbf20e7e6626064fb9e0f1d3117124a, type: 3}
   m_PrefabInstance: {fileID: 3841741422683688084}
   m_PrefabAsset: {fileID: 0}

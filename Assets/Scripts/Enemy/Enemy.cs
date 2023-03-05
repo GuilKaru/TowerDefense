@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
     public float speed;
     //public float modifiedSpeed;
     public float currentHealth;
+    public float shield = 0;
+    public float dmgMitigation = 10;
 
     [Header("Enemy Money Drop")]
     public int moneyDrop;
@@ -26,12 +28,25 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
-        //modifiedSpeed = speed;
     }
 
     public void TakeDamage(float damage)
     {
-        currentHealth -= damage;
+        if(shield > 0)
+        {
+            if((shield - (damage - dmgMitigation)) < 0)
+            {
+                shield = 0;
+            }
+            else
+            {
+                shield -= damage - dmgMitigation;
+            }
+        }
+        else
+        {
+            currentHealth -= damage;
+        }
 
         if(currentHealth <= 0 && !isDead)
         {

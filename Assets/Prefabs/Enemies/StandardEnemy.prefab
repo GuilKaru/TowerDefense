@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 619284073573698933}
   - component: {fileID: 3421843860911438271}
   - component: {fileID: 8258403990720891590}
+  - component: {fileID: 8843489188404131329}
+  - component: {fileID: 5880851405545204417}
   m_Layer: 0
   m_Name: StandardEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +101,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
-  speed: 10
+  speed: 2.5
   currentHealth: 50
   moneyDrop: 50
+--- !u!114 &8843489188404131329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3781942509116430442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842b190224cddd4429ee329527a09efb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &5880851405545204417
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3781942509116430442}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 530612367421449832, guid: 3a4cb41a7f20a34488dc64f0d1cec7dc, type: 3}

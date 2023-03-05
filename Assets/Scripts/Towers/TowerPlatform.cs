@@ -11,8 +11,10 @@ public class TowerPlatform : MonoBehaviour
 
     private Renderer rend;
 
+    BuildManager buildManager;
     private void Start()
     {
+        buildManager = BuildManager.instance;
         rend = GetComponent<Renderer>();
         rend.materials[1].color = Color.blue;
     }
@@ -22,11 +24,35 @@ public class TowerPlatform : MonoBehaviour
         Debug.Log("Did it entereeeed???");
         if (EventSystem.current.IsPointerOverGameObject()) return;
 
-        rend.materials[1].color = Color.red;
+        if (!buildManager.CanBuild) return;
+
+        if(!buildManager.HasMoney)
+        {
+            rend.materials[1].color = Color.red;
+        }
+        else
+        {
+            rend.materials[1].color = Color.green;
+        }
+
     }
 
     private void OnMouseExit()
     {
         rend.materials[1].color = Color.blue;
+    }
+
+    private void OnMouseDown()
+    {
+        if (!buildManager.CanBuild) return;
+
+        if(EventSystem.current.IsPointerOverGameObject()) return;
+
+        if(tower != null)
+        {
+            return;
+        }
+
+        buildManager.BuildTowerHere(this);
     }
 }

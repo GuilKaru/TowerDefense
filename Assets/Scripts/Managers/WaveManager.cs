@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using Unity.VisualScripting;
 
 [Serializable]
 public struct WaveDetails
@@ -10,11 +11,18 @@ public struct WaveDetails
     //Enemies in every wave (Level Builder)
     public List<WaveEnemies> waveEnemies;
 }
+
+[Serializable]
+public struct WavesRoad
+{
+    public List<WaveDetails> Waves;
+    [Header("Spawn Point of Enemies")]
+    public Transform spawnPoint;
+    public Transform EnemiesPlaceholder;
+    public EnemyWaypoints enemyWaypoints;
+}
 public class WaveManager : MonoBehaviour
 {
-    [Header("Spawning Points")]
-    [SerializeField] private Transform spawnPoint;
-    [SerializeField] private Transform EnemiesPlaceholder;
 
     [Header("WaveUI")]
     public TextMeshProUGUI currentWave;
@@ -25,23 +33,28 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private float timeBetweenWaves = 5f;
     public float waitTime = 1f;
     private float waveCD = 5f;
+    private int totalNumWaves;
 
-    [SerializeField] private List<WaveDetails> Waves;
+    [SerializeField] private List<WavesRoad> wavesRoad;
 
     public static int EnemiesAlive = 0;
 
-/*    private void Start()
+    private void Start()
     {
-        totalWaves.text = Waves.Count.ToString();
+        for(int i = 0; i < wavesRoad.Count; i++)
+        {
+            totalNumWaves += wavesRoad[i].Waves.Count;
+        }
+        totalWaves.text = totalNumWaves.ToString();
     }
 
     private void Update()
     {
-        //if (GameManager.gameEnded) return;
+        if (GameManager.gameEnded) return;
 
         if (EnemiesAlive > 0) return;
 
-        if(waveCD <= 0f && wavesIndex < Waves.Count)
+        if (waveCD <= 0f && wavesIndex < totalNumWaves)
         {
             StartCoroutine(SpawnWave(wavesIndex));
             waveCD = timeBetweenWaves;
@@ -50,37 +63,51 @@ public class WaveManager : MonoBehaviour
 
         waveCD -= Time.deltaTime;
 
-        if(wavesIndex + 1 <= Waves.Count)
+        if (wavesIndex + 1 <= wavesRoad[0].Waves.Count)
         {
             currentWave.text = (wavesIndex + 1).ToString();
         }
 
-        if((wavesIndex == Waves.Count) && (EnemiesAlive == 0))
+        if ((wavesIndex == wavesRoad[0].Waves.Count) && (EnemiesAlive == 0))
         {
-            //GameManager.gameWon = true;
+            GameManager.gameWon = true;
         }
     }
 
     IEnumerator SpawnWave(int waveIdx)
     {
-        if(GameManager.gameEnded)
+        if (GameManager.gameEnded)
         {
             yield return null;
         }
         else
         {
-            for(int i = 0; i < Waves[waveIdx].waveEnemies.Count; i++)
+            for(int k = 0; k < wavesRoad.Count; k++)
             {
-                for(int j = 0; j < Waves[waveIdx].waveEnemies[i].enemiesAmount; j++)
-                {
-                    EnemiesAlive++;
-                    Transform Enemy = Instantiate(Waves[waveIdx].waveEnemies[i].enemyPrefab, spawnPoint.position,
-                                                    spawnPoint.rotation, EnemiesPlaceholder);
-                    yield return new WaitForSeconds(Waves[wavesIndex].waveEnemies[i].spawnRate);
-                }
+                Debug.Log(wavesRoad[k].Waves[waveIdx].waveEnemies.Count);
+
+                StartCoroutine(SpawnNewWave(waveIdx, k));
             }
+
+
             yield return new WaitUntil(() => EnemiesAlive == 0);
             wavesIndex++;
         }
-    }*/
+    }
+
+    IEnumerator SpawnNewWave(int waveIdx, int k)
+    {
+        for(int i = 0; i < wavesRoad[k].Waves[waveIdx].waveEnemies.Count; i++)
+        {
+            for(int j = 0; j < wavesRoad[k].Waves[waveIdx].waveEnemies[i].enemiesAmount; j++)
+            {
+                EnemiesAlive++;
+                Transform Enemy = Instantiate(wavesRoad[k].Waves[waveIdx].waveEnemies[i].enemyPrefab, wavesRoad[k].spawnPoint.position,
+                                                wavesRoad[k].spawnPoint.rotation, wavesRoad[k].EnemiesPlaceholder);
+                EnemyMovement enemyMovement = Enemy.GetComponent<EnemyMovement>();
+                enemyMovement.allWaypoints = wavesRoad[k].enemyWaypoints.waypoints;
+                yield return new WaitForSeconds(wavesRoad[k].Waves[waveIdx].waveEnemies[i].spawnRate);
+            }
+        }
+    }
 }

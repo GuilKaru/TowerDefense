@@ -3,13 +3,14 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private Enemy enemy;
-    private Transform wpTarget;
+    public Transform wpTarget;
+    public Transform[] allWaypoints;
     private int waypointIndex = 0;
 
     private void Start()
     {
         enemy = GetComponent<Enemy>();
-        wpTarget = EnemyWaypoints.waypoints[0];
+        wpTarget = allWaypoints[0];
     }
 
     private void Update()
@@ -18,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
         if (GameManager.gameEnded) return;
 
         Vector3 direction = wpTarget.position - transform.position;
-        transform.Translate(direction.normalized * Time.deltaTime, Space.World);
+        transform.Translate(direction.normalized * enemy.speed * Time.deltaTime, Space.World);
 
         if(Vector3.Distance(transform.position, wpTarget.position) <= 0.5f)
         {
@@ -30,13 +31,13 @@ public class EnemyMovement : MonoBehaviour
 
     private void ChangeWaypoint()
     {
-        if(waypointIndex >= EnemyWaypoints.waypoints.Length -1)
+        if(waypointIndex >= allWaypoints.Length -1)
         {
             EndOfPath();
             return;
         }
         waypointIndex++;
-        wpTarget = EnemyWaypoints.waypoints[waypointIndex];
+        wpTarget = allWaypoints[waypointIndex];
     }
 
     void EndOfPath()

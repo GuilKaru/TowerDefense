@@ -3,9 +3,9 @@ using UnityEngine;
 public class EnemyWaypoints : MonoBehaviour
 {
     [Header("Waypoints")]
-    public static Transform[] waypoints;
+    public Transform[] waypoints;
 
-    private void Awake()
+    /*private void Awake()
     {
         waypoints = new Transform[transform.childCount];
 
@@ -13,5 +13,5 @@ public class EnemyWaypoints : MonoBehaviour
         {
             waypoints[i] = transform.GetChild(i);
         }
-    }
+    }*/
 }

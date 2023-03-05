@@ -17,23 +17,23 @@ public class GameManager : MonoBehaviour
         gameEnded = false;
     }
 
-    /*private void Update()
+    private void Update()
     {
         if (gameEnded) return;
 
-        if(gameWon)
+        if (gameWon)
         {
-            gameEnded= true;
+            gameEnded = true;
             gameWonUI.SetActive(true);
             return;
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
         }
 
-        if(PlayerStats.Lives <= 0) 
+        if (PlayerStats.Lives <= 0)
         {
             gameEnded = true;
             GameOver();
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         gameOverUI.SetActive(true);
-    }*/
+    }
 
     public void TogglePause()
     {
@@ -58,6 +58,12 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
+    }
+
+    public void RetryPause()
+    {
+        TogglePause();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void BackToMenu()

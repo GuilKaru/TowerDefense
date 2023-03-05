@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class BuildManager : MonoBehaviour
@@ -9,7 +6,7 @@ public class BuildManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if(instance != null)
         {
             return;
         }
@@ -20,6 +17,7 @@ public class BuildManager : MonoBehaviour
     public GameObject StandardTowerPrefab;
     public GameObject SniperTowerPrefab;
     public GameObject BigTowerPrefab;
+
     private BuildTower buildTower;
 
     public bool CanBuild
@@ -40,6 +38,7 @@ public class BuildManager : MonoBehaviour
 
     public void SetTowertoBuild(BuildTower tower)
     {
+        Debug.Log("Do I enter here???");
         buildTower = tower;
     }
 
@@ -53,9 +52,9 @@ public class BuildManager : MonoBehaviour
         }
 
         //Build Tower and pay its cost
-        PlayerStats.Money = buildTower.cost;
+        PlayerStats.Money -= buildTower.cost;
 
-        GameObject Tower = Instantiate(buildTower.TowerPrefab, platform.transform.position, platform.transform.rotation);
+        GameObject Tower = Instantiate(buildTower.TowerPrefab, new Vector3(platform.transform.position.x, platform.transform.position.y + 0.2f, platform.transform.position.z), platform.transform.rotation);
         Tower.transform.SetParent(platform.transform);
         platform.tower = Tower;
 
