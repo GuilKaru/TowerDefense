@@ -99,14 +99,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f915eccb03ecfc54bb16da278621be68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 5
+  turnSpeed: 2.5
   rotatingBase: {fileID: 2227206798382804931}
   tiltingCannon: {fileID: 6748493706041568655}
   bulletPrefab: {fileID: 157568805455147340, guid: 2d9058269cb6d304c8cccca6c299df6f, type: 3}
   firePoint: {fileID: 26100883092990963}
-  range: 7.5
-  fireRate: 1
-  fireCountdown: 0
+  range: 7
+  fireRate: 0.5
+  fireCountdown: 2
 --- !u!1001 &4157997388243349169
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -100,12 +100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f90ad073353b29340903677c05e99449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 60
   speed: 2.5
-  currentHealth: 150
+  currentHealth: 60
   shield: 0
   dmgMitigation: 10
-  moneyDrop: 50
+  moneyDrop: 10
 --- !u!114 &8843489188404131329
 MonoBehaviour:
   m_ObjectHideFlags: 0

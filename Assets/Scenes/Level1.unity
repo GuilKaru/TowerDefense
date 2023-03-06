@@ -4889,6 +4889,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7664503787288514804, guid: 38379d75e11cefd48b678991b7226574, type: 3}
+      propertyPath: wavesRoad.Array.data[1].Waves.Array.data[0].waveEnemies.Array.data[0].spawnRate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664503787288514804, guid: 38379d75e11cefd48b678991b7226574, type: 3}
       propertyPath: wavesRoad.Array.data[1].Waves.Array.data[1].waveEnemies.Array.data[0].spawnRate
       value: 1
       objectReference: {fileID: 0}
@@ -4930,7 +4934,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7664503787288514804, guid: 38379d75e11cefd48b678991b7226574, type: 3}
       propertyPath: wavesRoad.Array.data[1].Waves.Array.data[0].waveEnemies.Array.data[0].enemiesAmount
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7664503787288514804, guid: 38379d75e11cefd48b678991b7226574, type: 3}
       propertyPath: wavesRoad.Array.data[1].Waves.Array.data[1].waveEnemies.Array.data[0].enemiesAmount
@@ -5003,6 +5007,10 @@ PrefabInstance:
     - target: {fileID: 7664503787552847875, guid: 38379d75e11cefd48b678991b7226574, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664503787552847885, guid: 38379d75e11cefd48b678991b7226574, type: 3}
+      propertyPath: startMoney
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38379d75e11cefd48b678991b7226574, type: 3}
