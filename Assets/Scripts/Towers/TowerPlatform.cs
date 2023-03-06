@@ -6,8 +6,10 @@ public class TowerPlatform : MonoBehaviour
     [Header("Tower in Platform")]
     public GameObject tower;
 
-/*    [Header("Platform Material Colors")]
-    public Material grassMaterial;*/
+    [Header("Tower Platform Colors")]
+    public Color platformColor;
+    public Color hoverColor;
+    public Color noMoneyColor;
 
     private Renderer rend;
 
@@ -16,7 +18,7 @@ public class TowerPlatform : MonoBehaviour
     {
         buildManager = BuildManager.instance;
         rend = GetComponent<Renderer>();
-        rend.materials[1].color = Color.blue;
+        rend.materials[1].color = platformColor;
     }
 
     private void OnMouseEnter()
@@ -28,18 +30,18 @@ public class TowerPlatform : MonoBehaviour
 
         if(!buildManager.HasMoney)
         {
-            rend.materials[1].color = Color.red;
+            rend.materials[1].color = noMoneyColor;
         }
         else
         {
-            rend.materials[1].color = Color.green;
+            rend.materials[1].color = hoverColor;
         }
 
     }
 
     private void OnMouseExit()
     {
-        rend.materials[1].color = Color.blue;
+        rend.materials[1].color = platformColor;
     }
 
     private void OnMouseDown()

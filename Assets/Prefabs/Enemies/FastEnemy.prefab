@@ -64,9 +64,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c892988e8745597418af49b935fa283c, type: 2}
-  - {fileID: 2100000, guid: c29ddb83762b17b489d499530bc8d608, type: 2}
-  - {fileID: 2100000, guid: a410e836eec0a834f942154052ee5a80, type: 2}
+  - {fileID: 2100000, guid: f87bef3a41132f04eaf91702ca2a3214, type: 2}
+  - {fileID: 2100000, guid: a1fa8f3d2cc9bed4e92ddb0c5cb02971, type: 2}
+  - {fileID: 2100000, guid: f4795bad99f50e3479232baabd686c46, type: 2}
   - {fileID: 2100000, guid: f6fc47aeeb3c4484893bda78b6f52660, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -115,6 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842b190224cddd4429ee329527a09efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wpTarget: {fileID: 0}
+  allWaypoints: []
 --- !u!114 &50665711289120446
 MonoBehaviour:
   m_ObjectHideFlags: 0

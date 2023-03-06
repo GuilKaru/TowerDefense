@@ -98,8 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ee847ece402db4f9c47c029763a09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grassMaterial: {fileID: 2100000, guid: 72180e90a5b0c87469716e60ba5de59e, type: 2}
-  grassMaterialHover: {fileID: 2100000, guid: b8c08a236ab6e3540ad8850f6e7feab8, type: 2}
+  tower: {fileID: 0}
+  platformColor: {r: 0.6627451, g: 0.8000001, b: 0.6784314, a: 0}
+  hoverColor: {r: 0.33641866, g: 0.5283019, b: 0.36383054, a: 0}
+  noMoneyColor: {r: 0.91372555, g: 0.45882356, b: 0.60784316, a: 0}
 --- !u!65 &8913790660192006213
 BoxCollider:
   m_ObjectHideFlags: 0
