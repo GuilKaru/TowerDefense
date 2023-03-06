@@ -23,7 +23,6 @@ public class TowerPlatform : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        Debug.Log("Did it entereeeed???");
         if (EventSystem.current.IsPointerOverGameObject()) return;
 
         if (!buildManager.CanBuild) return;

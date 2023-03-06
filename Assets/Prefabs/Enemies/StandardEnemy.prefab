@@ -100,9 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f90ad073353b29340903677c05e99449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 150
   speed: 2.5
-  currentHealth: 50
+  currentHealth: 150
+  shield: 0
+  dmgMitigation: 10
   moneyDrop: 50
 --- !u!114 &8843489188404131329
 MonoBehaviour:
@@ -116,6 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842b190224cddd4429ee329527a09efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wpTarget: {fileID: 0}
+  allWaypoints: []
 --- !u!64 &5880851405545204417
 MeshCollider:
   m_ObjectHideFlags: 0

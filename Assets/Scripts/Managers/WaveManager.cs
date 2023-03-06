@@ -45,7 +45,7 @@ public class WaveManager : MonoBehaviour
         {
             totalNumWaves += wavesRoad[i].Waves.Count;
         }
-        totalWaves.text = totalNumWaves.ToString();
+        totalWaves.text = wavesRoad[0].Waves.Count.ToString();
     }
 
     private void Update()
@@ -84,8 +84,6 @@ public class WaveManager : MonoBehaviour
         {
             for(int k = 0; k < wavesRoad.Count; k++)
             {
-                Debug.Log(wavesRoad[k].Waves[waveIdx].waveEnemies.Count);
-
                 StartCoroutine(SpawnNewWave(waveIdx, k));
             }
 

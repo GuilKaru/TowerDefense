@@ -38,7 +38,6 @@ public class BuildManager : MonoBehaviour
 
     public void SetTowertoBuild(BuildTower tower)
     {
-        Debug.Log("Do I enter here???");
         buildTower = tower;
     }
 
@@ -58,6 +57,6 @@ public class BuildManager : MonoBehaviour
         Tower.transform.SetParent(platform.transform);
         platform.tower = Tower;
 
-        Debug.Log($"My money right now {PlayerStats.Money}");
+        //Debug.Log($"My money right now {PlayerStats.Money}");
     }
 }
