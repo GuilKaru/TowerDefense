@@ -15,6 +15,7 @@ public struct WaveDetails
 [Serializable]
 public struct WavesRoad
 {
+    //List of Roads the enemies can take
     public List<WaveDetails> Waves;
     [Header("Spawn Point of Enemies")]
     public Transform spawnPoint;
@@ -41,6 +42,7 @@ public class WaveManager : MonoBehaviour
 
     private void Start()
     {
+        //Total number of waves to show in UI and to keep track for the wave manager
         for(int i = 0; i < wavesRoad.Count; i++)
         {
             totalNumWaves += wavesRoad[i].Waves.Count;
@@ -56,6 +58,7 @@ public class WaveManager : MonoBehaviour
 
         if (waveCD <= 0f && wavesIndex < totalNumWaves)
         {
+            //Spawn wave by it's index and wait for wave to finish to start the next one
             StartCoroutine(SpawnWave(wavesIndex));
             waveCD = timeBetweenWaves;
             return;
@@ -65,6 +68,7 @@ public class WaveManager : MonoBehaviour
 
         if (wavesIndex + 1 <= wavesRoad[0].Waves.Count)
         {
+            //to show in the UI
             currentWave.text = (wavesIndex + 1).ToString();
         }
 
@@ -84,10 +88,11 @@ public class WaveManager : MonoBehaviour
         {
             for(int k = 0; k < wavesRoad.Count; k++)
             {
+                //Spawn waves in each Road at almost the same time.
                 StartCoroutine(SpawnNewWave(waveIdx, k));
             }
 
-
+            //Wait for enemies to die to go forward
             yield return new WaitUntil(() => EnemiesAlive == 0);
             wavesIndex++;
         }
@@ -95,6 +100,7 @@ public class WaveManager : MonoBehaviour
 
     IEnumerator SpawnNewWave(int waveIdx, int k)
     {
+        //Spawn enemies in each wave
         for(int i = 0; i < wavesRoad[k].Waves[waveIdx].waveEnemies.Count; i++)
         {
             for(int j = 0; j < wavesRoad[k].Waves[waveIdx].waveEnemies[i].enemiesAmount; j++)

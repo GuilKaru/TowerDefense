@@ -38,7 +38,7 @@ public class Tower : MonoBehaviour
         GameObject nearestEnemy = null;
 
         foreach(GameObject enemy in enemies)
-        {
+        { //Attack the nearest enemy
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             if(distanceToEnemy < shortestDistance)
             {
@@ -79,6 +79,7 @@ public class Tower : MonoBehaviour
 
     private void TargetLockOn()
     {
+        //Rotate the base of the tower only in the Y axis.
         Vector3 dir = towerTarget.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotateBase = Quaternion.Lerp(rotatingBase.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
@@ -88,6 +89,7 @@ public class Tower : MonoBehaviour
 
     private void CannonLockOn()
     {
+        //Rotate the cannon to target the enemie and not tilt the base of the tower.
         Vector3 dir = towerTarget.position - tiltingCannon.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotateCannon = Quaternion.Lerp(tiltingCannon.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
@@ -96,6 +98,7 @@ public class Tower : MonoBehaviour
 
     private void Shoot()
     {
+        //Fire the bullet and give the enemy target to the bullet
         GameObject ActiveBullet = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Bullet bullet = ActiveBullet.GetComponent<Bullet>();
 
@@ -105,6 +108,7 @@ public class Tower : MonoBehaviour
         }
     }
 
+    //Show the range of the tower in Gizmos
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;

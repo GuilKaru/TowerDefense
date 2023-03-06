@@ -4,6 +4,7 @@ using System;
 [Serializable]
 public struct WaveEnemies
 {
+    //How many enemies are in a wave
     [Header("Enemies in Wave")]
     public int enemiesAmount;
     public Transform enemyPrefab;
@@ -15,7 +16,6 @@ public class Enemy : MonoBehaviour
     [Header("Enemy Stats")]
     public float maxHealth;
     public float speed;
-    //public float modifiedSpeed;
     public float currentHealth;
     public float shield = 0;
     public float dmgMitigation = 10;
@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        //If enemie has shield then use the damage mitigation to take lower amoun of dmg
         if(shield > 0)
         {
             if((shield - (damage - dmgMitigation)) < 0)
@@ -54,6 +55,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    //Drop money when killed, destroy object and tell the wavemanager there is one less enemy alive
     private void Die()
     {
         isDead = true;

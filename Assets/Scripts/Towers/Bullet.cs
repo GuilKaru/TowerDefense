@@ -27,7 +27,7 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        //Direction of the enemy to target
         Vector3 dir = enemyTarget.position - transform.position;
         float currentDistance = speed * Time.deltaTime;
 
@@ -42,6 +42,7 @@ public class Bullet : MonoBehaviour
 
     private void HitTarget()
     {
+        //Instantiate particle effect and destroy it in 2 seconds
         GameObject effectIns = (GameObject)Instantiate(hitEffect, transform.position, transform.rotation);
         Destroy(effectIns, 2f);
 
@@ -69,6 +70,7 @@ public class Bullet : MonoBehaviour
 
     void Explode()
     {
+        //Hit all enemies in a radius
         Collider[] hitObjects = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider hitObject in hitObjects)
         {
@@ -79,6 +81,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    //Gizmo to see damage area
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
